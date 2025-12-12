@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>تسجيل دخول المدير</title>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>تسجيل دخول المدير</title>
 <link rel="stylesheet" href="style.css">
-<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
-<script src="firebase.js"></script>
 </head>
 <body>
 <div class="container">
@@ -16,20 +16,29 @@
   </form>
   <p id="login-msg"></p>
 </div>
-<script>
-const loginForm = document.getElementById('login-form');
-const loginMsg = document.getElementById('login-msg');
-const auth = firebase.auth();
-loginForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const email = document.getElementById('email').value.trim();
-  const password = document.getElementById('password').value.trim();
-  auth.signInWithEmailAndPassword(email, password)
-    .then(()=> window.location.href = 'admin.html')
-    .catch(err => {
-      console.error(err); loginMsg.textContent = '❌ فشل تسجيل الدخول';
-    });
-});
+
+<!-- Firebase Config & Auth -->
+<script type="module">
+  import { auth } from './firebase.js';
+
+  const loginForm = document.getElementById('login-form');
+  const loginMsg = document.getElementById('login-msg');
+
+  loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value.trim();
+
+    auth.signInWithEmailAndPassword(email, password)
+      .then(() => {
+        window.location.href = 'admin.html';
+      })
+      .catch(err => {
+        console.error(err);
+        loginMsg.textContent = '❌ فشل تسجيل الدخول';
+      });
+  });
 </script>
+
 </body>
 </html>
