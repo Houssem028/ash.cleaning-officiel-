@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ASH Window Cleaning</title>
+<link rel="stylesheet" href="style.css">
+<!-- Firebase & EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+</head>
+<body>
+
+<header>
+  <img src="logo.png" alt="ASH Logo">
+  <h1>ASH Window Cleaning</h1>
+</header>
+
+<div class="container">
+  <section id="about" class="section">
+    <h2>من نحن</h2>
+    <p>شركة ASH تقدّم خدمات تنظيف النوافذ والواجهات بطرق آمنة واحترافية سواء للمنازل أو الشركات. فريق مؤهل، أدوات متقدّمة، وخدمة سريعة.</p>
+  </section>
+
+  <section id="services" class="section">
+    <h2>خدماتنا</h2>
+    <div class="services">
+      <div class="service-card">تنظيف النوافذ السكنية</div>
+      <div class="service-card">تنظيف النوافذ الزجاجية الكبيرة</div>
+      <div class="service-card">تنظيف الواجهات ورفع الأوساخ</div>
+      <div class="service-card">خدمات دورية للشركات</div>
+    </div>
+  </section>
+
+  <section id="booking" class="section">
+    <h2>احجز خدمة الآن</h2>
+    <form id="booking-form">
+      <input id="name" placeholder="الاسم" required>
+      <input id="phone" placeholder="رقم الهاتف" required>
+      <select id="service-select">
+        <option>تنظيف النوافذ</option>
+        <option>تنظيف الواجهات</option>
+        <option>خدمات دورية</option>
+      </select>
+      <input id="address" placeholder="العنوان">
+      <input id="date" type="date">
+      <button type="submit">أرسل طلبك</button>
+    </form>
+    <p id="msg"></p>
+  </section>
+
+  <section id="contact" class="section">
+    <h2>اتصل بنا</h2>
+    <p>الهاتف: +216 24 598 941 | +216 51 084 442</p>
+    <p>البريد: mmzhoussem@gmail.com</p>
+  </section>
+</div>
+
+<footer>&copy; 2025 ASH Window Cleaning</footer>
+
+<!-- firebase settings -->
+<script src="firebase.js"></script>
+<!-- booking handler -->
+<script src="booking.js"></script>
+</body>
+</html>
