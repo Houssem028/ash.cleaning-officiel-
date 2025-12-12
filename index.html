@@ -5,10 +5,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ASH Window Cleaning</title>
 <link rel="stylesheet" href="style.css">
+
 <!-- Firebase & EmailJS -->
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
 </head>
 <body>
 
@@ -59,9 +61,10 @@
 
 <footer>&copy; 2025 ASH Window Cleaning</footer>
 
-<!-- firebase settings -->
-<script src="firebase.js"></script>
-<!-- booking handler -->
-<script src="booking.js"></script>
+<!-- Firebase config -->
+<script type="module" src="firebase.js"></script>
+<!-- Booking handler -->
+<script type="module" src="booking.js"></script>
+
 </body>
 </html>
