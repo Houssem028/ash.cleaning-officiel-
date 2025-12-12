@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ASH Window Cleaning</title>
 <link rel="stylesheet" href="style.css">
 
@@ -13,9 +13,9 @@
 <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
 
 <style>
-/* تصميم نافذة تسجيل الدخول */
+/* نافذة تسجيل الدخول */
 #login-popup {
-  display: none; /* مخفية افتراضيًا */
+  display: none;
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
@@ -24,7 +24,6 @@
   align-items: center;
   z-index: 999;
 }
-
 #login-popup .popup-content {
   background: #fff;
   padding: 20px;
@@ -32,13 +31,11 @@
   width: 300px;
   text-align: center;
 }
-
 #login-popup input {
   width: 90%;
   padding: 8px;
   margin: 8px 0;
 }
-
 #login-popup button {
   padding: 8px 15px;
   margin-top: 10px;
@@ -58,7 +55,7 @@
   <img src="logo.png" alt="ASH Logo">
   <h1>ASH Window Cleaning</h1>
 
-  <!-- زر لفتح نافذة تسجيل الدخول -->
+  <!-- زر فتح تسجيل الدخول -->
   <button id="open-login">تسجيل دخول المدير</button>
 </header>
 
@@ -104,7 +101,7 @@
 
 <footer>&copy; 2025 ASH Window Cleaning</footer>
 
-<!-- نافذة تسجيل الدخول المنبثقة -->
+<!-- نافذة تسجيل الدخول -->
 <div id="login-popup">
   <div class="popup-content">
     <span id="close-popup">✖</span>
