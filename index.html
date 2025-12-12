@@ -11,18 +11,61 @@
 <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+
+<style>
+/* تصميم نافذة تسجيل الدخول */
+#login-popup {
+  display: none; /* مخفية افتراضيًا */
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+#login-popup .popup-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+}
+
+#login-popup input {
+  width: 90%;
+  padding: 8px;
+  margin: 8px 0;
+}
+
+#login-popup button {
+  padding: 8px 15px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+#login-popup #close-popup {
+  cursor: pointer;
+  color: red;
+  float: right;
+  font-weight: bold;
+}
+</style>
 </head>
 <body>
 
 <header>
   <img src="logo.png" alt="ASH Logo">
   <h1>ASH Window Cleaning</h1>
+
+  <!-- زر لفتح نافذة تسجيل الدخول -->
+  <button id="open-login">تسجيل دخول المدير</button>
 </header>
 
 <div class="container">
   <section id="about" class="section">
     <h2>من نحن</h2>
-    <p>شركة ASH تقدّم خدمات تنظيف النوافذ والواجهات بطرق آمنة واحترافية سواء للمنازل أو الشركات. فريق مؤهل، أدوات متقدّمة، وخدمة سريعة.</p>
+    <p>شركة ASH تقدّم خدمات تنظيف النوافذ والواجهات بطرق آمنة واحترافية...</p>
   </section>
 
   <section id="services" class="section">
@@ -61,10 +104,54 @@
 
 <footer>&copy; 2025 ASH Window Cleaning</footer>
 
-<!-- Firebase config -->
+<!-- نافذة تسجيل الدخول المنبثقة -->
+<div id="login-popup">
+  <div class="popup-content">
+    <span id="close-popup">✖</span>
+    <h3>تسجيل دخول المدير</h3>
+    <input id="admin-email" type="email" placeholder="البريد الإلكتروني">
+    <input id="admin-password" type="password" placeholder="كلمة المرور">
+    <button id="admin-login-btn">دخول</button>
+    <p id="admin-msg"></p>
+  </div>
+</div>
+
+<!-- Firebase Config -->
 <script type="module" src="firebase.js"></script>
-<!-- Booking handler -->
 <script type="module" src="booking.js"></script>
+
+<script type="module">
+import { auth } from './firebase.js';
+
+// فتح وغلق النافذة
+const popup = document.getElementById('login-popup');
+document.getElementById('open-login').addEventListener('click', () => popup.style.display = 'flex');
+document.getElementById('close-popup').addEventListener('click', () => popup.style.display = 'none');
+
+// تسجيل الدخول للمدير
+const loginBtn = document.getElementById('admin-login-btn');
+const emailInput = document.getElementById('admin-email');
+const passwordInput = document.getElementById('admin-password');
+const msg = document.getElementById('admin-msg');
+
+loginBtn.addEventListener('click', () => {
+  const email = emailInput.value.trim();
+  const password = passwordInput.value.trim();
+  if (!email || !password) {
+    msg.textContent = "❌ الرجاء إدخال البريد وكلمة المرور";
+    return;
+  }
+
+  auth.signInWithEmailAndPassword(email, password)
+    .then(() => {
+      window.location.href = 'admin.html'; // تحويل إلى لوحة الأدمن
+    })
+    .catch(err => {
+      console.error(err);
+      msg.textContent = "❌ فشل تسجيل الدخول";
+    });
+});
+</script>
 
 </body>
 </html>
